@@ -1,0 +1,200 @@
+
+RewriteEngine On
+# Yonlendirme --------------------------------------------------------------------------------------------------------------------------
+
+	# localhost yonlendirme
+	#RewriteCond %{HTTP_HOST}									^192\.168\.1\.168											[NC]
+	#RewriteRule ^(.*)$											http://localhost/xxx/$1										[L,R=301]
+
+	# basa www ekle
+	#RewriteCond %{HTTP_HOST}									^candycraft\.net												[NC]
+	#RewriteRule ^(.*)$											https://localhost/$1									[L,R=301]
+
+	# sondan slash ucur
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !/(pulse|cdn)/
+	RewriteRule ^(.*)/$ 										/$1								[L,R=301]
+
+	# sona slash ekle
+	#RewriteCond %{REQUEST_URI}									!(/$|\.)						[NC]
+	#RewriteRule (.*) 											%{REQUEST_URI}/					[L,R=301]
+
+	RewriteRule ^404/								404.php										[L,NC]
+	ErrorDocument 404								/404.php/
+	
+	RewriteCond %{SERVER_PORT} !=443
+	RewriteRule ^ https://localhost%{REQUEST_URI} [NS,R,L]
+	
+# Yonlendirme --------------------------------------------------------------------------------------------------------------------------
+	RewriteRule ^panel							panel.php										[QSA,NC]
+	RewriteRule ^panel/							panel.php										[QSA,NC]
+	
+	RewriteRule ^videoyorumlarim				videoyorumlarim.php								[QSA,NC]
+	RewriteRule ^videoyorumlarim/				videoyorumlarim.php								[QSA,NC]
+	
+	RewriteRule ^haberyorumlarim				haberyorumlarim.php								[QSA,NC]
+	RewriteRule ^haberyorumlarim/				haberyorumlarim.php								[QSA,NC]
+	
+	RewriteRule ^durumum						statistics.php									[QSA,NC]
+	RewriteRule ^durumum/						statistics.php									[QSA,NC]
+	
+	RewriteRule ^videolarim						videolarim.php									[QSA,NC]
+	RewriteRule ^videolarim/						videolarim.php									[QSA,NC]
+	
+	RewriteRule ^yenivideo						yenivideo.php									[QSA,NC]
+	RewriteRule ^yenivideo/						yenivideo.php									[QSA,NC]
+	
+	RewriteRule ^tumvideolar						videolar.php									[QSA,NC]
+	RewriteRule ^tumvideolar/						videolar.php									[QSA,NC]
+	
+	
+	RewriteRule ^forumlar						forum.php										[QSA,NC]
+	RewriteRule ^forumlar/						forum.php										[QSA,NC]
+	
+	RewriteRule ^oyuncuara						oyuncuara.php									[QSA,NC]
+	RewriteRule ^oyuncuara/						oyuncuara.php									[QSA,NC]
+	
+	RewriteRule ^macerayakatil					macerayakatil.php								[QSA,NC]
+	RewriteRule ^macerayakatil/					macerayakatil.php								[QSA,NC]
+	
+	RewriteRule ^satinal						satinal.php										[QSA,NC]
+	RewriteRule ^satinal/						satinal.php										[QSA,NC]
+	
+	RewriteRule ^krediyukle		kasagame.php				[QSA,NC]
+	RewriteRule ^krediyukle/    kasagame.php				[QSA,NC]
+	
+	RewriteRule ^gecmis							gecmis.php										[QSA,NC]
+	RewriteRule ^gecmis/						gecmis.php										[QSA,NC]
+	
+	RewriteRule ^sonaldiklarim					sonaldiklarim.php								[QSA,NC]
+	RewriteRule ^sonaldiklarim/					sonaldiklarim.php								[QSA,NC]
+	
+	RewriteRule ^destekmerkezi					destekmerkezi.php								[QSA,NC]
+	RewriteRule ^destekmerkezi/					destekmerkezi.php								[QSA,NC]
+	
+	RewriteRule ^sonuc							forumara.php									[QSA,NC]
+	RewriteRule ^sonuc/							forumara.php									[QSA,NC]
+	
+	RewriteRule ^kurallar						kurallar.php									[QSA,NC]
+	RewriteRule ^kurallar/						kurallar.php									[QSA,NC]
+	
+	RewriteRule ^kullanici_istatistik/([a-z0-9_-]+)$		userstatistics.php?p=$1								[QSA,NC]
+	RewriteRule ^kullanici_istatistik/([a-z0-9_-]+)/$		userstatistics.php?p=$1			 					[QSA,NC]
+	
+	
+	RewriteRule ^siralama/([a-z0-9_-]+)$		istatistik.php?p=$1								[QSA,NC]
+	RewriteRule ^siralama/([a-z0-9_-]+)/$		istatistik.php?p=$1			 					[QSA,NC]
+	
+	
+	
+	RewriteRule ^siralama						istatistik.php									[QSA,NC]
+	RewriteRule ^siralama/						istatistik.php									[QSA,NC]	
+	
+	RewriteRule ^sayfa/([a-z0-9_-]+)$		sayfa.php?p=$1								[QSA,NC]
+	RewriteRule ^sayfa/([a-z0-9_-]+)/$		sayfa.php?p=$1			 					[QSA,NC]
+	
+	
+	RewriteRule ^market							market.php										[QSA,NC]
+	RewriteRule ^market/						market.php										[QSA,NC]
+	
+	RewriteRule ^habersonuc						haberara.php									[QSA,NC]
+	RewriteRule ^habersonuc/					haberara.php									[QSA,NC]
+	
+	RewriteRule ^talepolustur					talepolustur.php								[QSA,NC]
+	RewriteRule ^talepolustur/					talepolustur.php								[QSA,NC]
+	
+	RewriteRule ^destekdetay/([a-z0-9_-]+)$		destekdetay.php?p=$1							[QSA,NC]
+	RewriteRule ^destekdetay/([a-z0-9_-]+)/$	destekdetay.php?p=$1			 				[QSA,NC]
+	
+	RewriteRule ^arkadaslarim					arkadaslarim.php								[QSA,NC]
+	RewriteRule ^arkadaslarim/					arkadaslarim.php								[QSA,NC]
+	
+	RewriteRule ^forumkategori/([a-z0-9_-]+)$			forum_topics.php?p=$1					[QSA,NC]
+	RewriteRule ^forumkategori/([a-z0-9_-]+)/$			forum_topics.php?p=$1			 		[QSA,NC]
+	
+	RewriteRule ^forumdetay/([a-z0-9_-]+)/([a-z0-9_-]+)$	forum_detay.php?p=$1&konu=$2		[QSA,NC]
+	RewriteRule ^forumdetay/([a-z0-9_-]+)/([a-z0-9_-]+)/$	forum_detay.php?p=$1&konu=$2		[QSA,NC]
+	
+	RewriteRule ^yardim_merkezi							sss.php											[QSA,NC]
+	RewriteRule ^yardim_merkezi/							sss.php											[QSA,NC]
+	RewriteRule ^profil_ayarlarim				profil_ayarlarim.php							[QSA,NC]
+	RewriteRule ^profil_ayarlarim/				profil_ayarlarim.php							[QSA,NC]
+	
+	RewriteRule ^mesajlarim						mesajlarim.php									[QSA,NC]
+	RewriteRule ^mesajlarim/					mesajlarim.php									[QSA,NC]
+	RewriteRule ^gonderilen						gonderilenmesajlar.php							[QSA,NC]
+	RewriteRule ^gonderilen/					gonderilenmesajlar.php							[QSA,NC]
+	RewriteRule ^mesajyaz						mesajyaz.php									[QSA,NC]
+	RewriteRule ^mesajyaz/						mesajyaz.php									[QSA,NC]
+	RewriteRule ^hakkimizda				  		kurumsal.php									[QSA,NC]	
+	RewriteRule ^hakkimizda/					kurumsal.php									[QSA,NC]
+	RewriteRule ^haberler				  		haber-listele.php								[QSA,NC]	
+	RewriteRule ^haberler/						haber-listele.php								[QSA,NC]
+	RewriteRule ^haber/([a-z0-9_-]+)$			haber-detay.php?p=$1							[QSA,NC]
+	RewriteRule ^haber/([a-z0-9_-]+)/$			haber-detay.php?p=$1			 				[QSA,NC]
+	
+	RewriteRule ^detay/([a-z0-9_-]+)$			mesajdetay.php?p=$1								[QSA,NC]
+	RewriteRule ^detay/([a-z0-9_-]+)/$			mesajdetay.php?p=$1			 					[QSA,NC] 
+	
+	RewriteRule ^video/([a-z0-9_-]+)$			video.php?p=$1									[QSA,NC]
+	RewriteRule ^video/([a-z0-9_-]+)/$			video.php?p=$1			 						[QSA,NC] 
+	
+	RewriteRule ^kategori/([a-z0-9_-]+)$		haber-kategori.php?p=$1							[QSA,NC]
+	RewriteRule ^kategori/([a-z0-9_-]+)/$		haber-kategori.php?p=$1			 				[QSA,NC]
+	
+	RewriteRule ^oyundetay/([a-z0-9_-]+)$			oyundetay.php?p=$1								[QSA,NC]
+	RewriteRule ^oyundetay/([a-z0-9_-]+)/$			oyundetay.php?p=$1			 					[QSA,NC]	
+	
+	RewriteRule ^projeler						projeler.php									[QSA,NC]
+	RewriteRule ^projeler/						projeler.php									[QSA,NC]
+	RewriteRule ^oyunlar						oyunlar.php										[QSA,NC]
+	RewriteRule ^oyunlar/						oyunlar.php										[QSA,NC]
+	RewriteRule ^arama/([a-z0-9_-]+)$			arama.php?arama=$1								[QSA,NC]
+	RewriteRule ^arama/([a-z0-9_-]+)/$			arama.php?arama=$1			 					[QSA,NC]
+	RewriteRule ^projedetay/([a-z0-9_-]+)$		projedetay.php?id=$1							[QSA,NC]
+	RewriteRule ^projedetay/([a-z0-9_-]+)/$		projedetay.php?id=$1							[QSA,NC]			
+	RewriteRule ^blog/([a-z0-9_-]+)$			blog.php?id=$1									[QSA,NC]
+	RewriteRule ^blog/([a-z0-9_-]+)/$			blog.php?id=$1									[QSA,NC]
+	RewriteRule ^profil/([a-z0-9_-]+)$			profile.php?p=$1								[QSA,NC]	
+	
+	RewriteRule ^iletisim						iletisim.php									[QSA,NC]
+
+
+
+# NOTE this account's php is controlled via FPM and the vhost, this is a place holder.
+# Do not edit. This next line is to support the cPanel php wrapper (php_cli).
+# AddType application/x-httpd-ea-php56 .php .phtml
+# php -- END cPanel-generated handler, do not edit
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+#<IfModule php5_module>
+#   php_flag asp_tags Off
+#   php_flag display_errors On
+#   php_value max_execution_time 300
+#   php_value max_input_time 600
+#   php_value max_input_vars 10000
+#   php_value memory_limit 128M
+#   php_value post_max_size 128M
+#   php_value session.gc_maxlifetime 86400
+#   php_value session.save_path "/var/cpanel/php/sessions/ea-php56"
+#   php_value upload_max_filesize 20M
+#   php_flag zlib.output_compression Off
+#</IfModule>
+#<IfModule lsapi_module>
+#   php_flag asp_tags Off
+#   php_flag display_errors On
+#   php_value max_execution_time 300
+#   php_value max_input_time 600
+#   php_value max_input_vars 10000
+#   php_value memory_limit 128M
+#   php_value post_max_size 128M
+#   php_value session.gc_maxlifetime 86400
+#   php_value session.save_path "/var/cpanel/php/sessions/ea-php56"
+#   php_value upload_max_filesize 20M
+#   php_flag zlib.output_compression Off
+#</IfModule>
+# END cPanel-generated php ini directives, do not edit
